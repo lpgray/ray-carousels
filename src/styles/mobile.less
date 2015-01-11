@@ -1,0 +1,26 @@
+@import "utils.less";
+
+.ray-carousel{
+    width: 100%;display: inline-block;overflow: hidden;
+    position: relative;
+    
+    .xct-inner{
+        position: relative;
+        .clearfix();
+        .xct-item{
+            float: left;
+        }
+    }
+
+    .xct-points{
+        position: absolute;z-index: 5;bottom: 0;right: 0;height: 30px;line-height: 30px;
+        width: 100%;text-align: center;
+        span{
+            width: 6px;height: 6px;border-radius: 50%;display: inline-block;background: #ccc;
+            margin: 0 2px;
+            &.active{
+                background: #00B9FC;
+            }
+        }
+    }
+}

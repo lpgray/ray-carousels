@@ -1,0 +1,17 @@
+{
+  "browser": true,
+  "camelcase": true,
+  "eqeqeq": false,
+  "immed": true,
+  "indent": 4,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "regexp": true,
+  "unused": true,
+  "strict": true,
+  "smarttabs": true,
+  "loopfunc" : true,
+  "expr": true,
+  "evil" :  true
+}
