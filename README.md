@@ -21,7 +21,7 @@ Carousel组件集合，包括mobile、oppo、pc-single、pc-multiple 4种独立�
 #### 引用JS
 ```html
 <script src="../src/assets/zepto.js"></script>
-    <script src="../mobile/ray-carousel.mobile.min.js"></script>
+<script src="../mobile/ray-carousel.mobile.min.js"></script>
 ```
 #### 调用API
 ```javascript
