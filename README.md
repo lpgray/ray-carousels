@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ray-carousel
 ======
 Carousel组件集合，包括mobile、oppo、pc-single、pc-multiple 4种独立的carousel效果集合，也许以后会添加更多的效果。
@@ -17,3 +18,7 @@ Carousel组件集合，包括mobile、oppo、pc-single、pc-multiple 4种独立�
 ## todo pc
 
 ## todo multiple
+=======
+# ray-carousel
+A carousel function tool for both PC and Mobile
+>>>>>>> ece8894652325e29f29b54a754ac7273c09ac34c
