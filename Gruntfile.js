@@ -40,7 +40,7 @@ module.exports = function(grunt) {
             },
             oppo:  {
                 src: ['src/scripts/core.js', 'src/scripts/oppo.js'],
-                dest: 'mobile/ray-carousel.oppo.js'
+                dest: 'oppo/ray-carousel.oppo.js'
             }
         },
 
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
             },
             oppo: {
                 files: {
-                    'oppo/ray-carousel.oppo.min.js' : 'mobile/ray-carousel.oppo.js'
+                    'oppo/ray-carousel.oppo.min.js' : 'oppo/ray-carousel.oppo.js'
                 }
             }
         },

@@ -1,0 +1,103 @@
+.oppo-carousel {
+  width: 100%;
+  height: 550px;
+  position: relative;
+}
+.oppo-carousel > a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-position: center center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 1s ease;
+}
+.oppo-carousel > a > .item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.oppo-carousel > a > .no1 {
+  left: -100%;
+  opacity: 0;
+  transition: all 1s ease;
+}
+.oppo-carousel > a > .no2 {
+  left: -100%;
+  opacity: 0;
+  transition: all 1s ease .2s;
+}
+.oppo-carousel > a.fading {
+  visibility: visible;
+  opacity: 1;
+}
+.oppo-carousel > a.active {
+  opacity: 1;
+  visibility: visible;
+}
+.oppo-carousel > a.active > .no1 {
+  left: 0;
+  opacity: 1;
+}
+.oppo-carousel > a.active > .no2 {
+  left: 0;
+  opacity: 1;
+}
+.oppo-carousel > a.leaving {
+  opacity: 1;
+  visibility: visible;
+}
+.oppo-carousel > a.leaving > .no1 {
+  left: 100%;
+  opacity: 0;
+}
+.oppo-carousel > a.leaving > .no2 {
+  left: 100%;
+  opacity: 0;
+}
+.oppo-carousel > .toggles {
+  width: 60%;
+  position: absolute;
+  height: 20px;
+  line-height: 20px;
+  left: 50%;
+  margin-left: -30%;
+  bottom: 20px;
+  z-index: 5;
+  text-align: center;
+}
+.oppo-carousel > .toggles > span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #ccc;
+  margin: 6px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.oppo-carousel > .toggles > span.active {
+  background-color: green;
+}
+.oppo-carousel > .timebar {
+  width: 100%;
+  height: 4px;
+  background-color: #ccc;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+}
+.oppo-carousel > .timebar > .inner {
+  width: 0%;
+  height: 4px;
+  background-color: #1c8f6e;
+}
