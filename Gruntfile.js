@@ -37,6 +37,10 @@ module.exports = function(grunt) {
             mobile:  {
                 src: ['src/scripts/core.js', 'src/scripts/mobile.js'],
                 dest: 'mobile/ray-carousel.mobile.js'
+            },
+            oppo:  {
+                src: ['src/scripts/core.js', 'src/scripts/oppo.js'],
+                dest: 'mobile/ray-carousel.oppo.js'
             }
         },
 
@@ -52,6 +56,11 @@ module.exports = function(grunt) {
             mobile: {
                 files: {
                     'mobile/ray-carousel.mobile.min.js' : 'mobile/ray-carousel.mobile.js'
+                }
+            },
+            oppo: {
+                files: {
+                    'oppo/ray-carousel.oppo.min.js' : 'mobile/ray-carousel.oppo.js'
                 }
             }
         },
@@ -69,6 +78,11 @@ module.exports = function(grunt) {
             mobile: {
                 files: {
                     'mobile/ray-carousel.mobile.min.css' : 'mobile/ray-carousel.mobile.css'
+                }
+            },
+            oppo: {
+                files: {
+                    'oppo/ray-carousel.oppo.min.css' : 'oppo/ray-carousel.oppo.css'
                 }
             }
         },
@@ -152,7 +166,8 @@ module.exports = function(grunt) {
                 compress: false,
                 files: {
                     'src/styles/style.css': 'src/styles/style.less',
-                    'src/styles/mobile.css': 'src/styles/mobile.less'
+                    'src/styles/mobile.css': 'src/styles/mobile.less',
+                    'src/styles/oppo.css': 'src/styles/oppo.less'
                 }
             },
             mobile: {
@@ -160,6 +175,13 @@ module.exports = function(grunt) {
                 compress: false,
                 files: {
                     'mobile/ray-carousel.mobile.css': 'src/styles/mobile.less'
+                }
+            },
+            oppo: {
+                path: 'src/styles',
+                compress: false,
+                files: {
+                    'oppo/ray-carousel.oppo.css': 'src/styles/oppo.less'
                 }
             }
         },
@@ -225,4 +247,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', ['clean', 'less', 'concat', 'uglify', 'cssmin', 'imagemin', 'includes', 'processhtml']);
     grunt.registerTask('build-mobile', ['less:mobile', 'cssmin:mobile', 'concat:mobile', 'uglify:mobile']);
+    grunt.registerTask('build-oppo', ['less:oppo', 'cssmin:oppo', 'concat:oppo', 'uglify:oppo']);
 };
