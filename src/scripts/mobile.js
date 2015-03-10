@@ -8,13 +8,13 @@
     var winW = $WIN.width();
 
     function Carousel($elem, options) {
-        // init template
         var _ = this;
         _.$elem = $elem;
         _.options = options;
+
+        winW = _.$elem.width();
+
         _.initTemplate();
-        _.bindEvent();
-        _.autoRun();
     }
 
     Carousel.fn = Carousel.prototype;
@@ -47,11 +47,15 @@
         });
         tmpl += '<div class="xct-item">' + firstItem + '</div>';
         tmpl += '</div>';
+        if (number <= 1) {
+            return;
+        }
         tmpl += '<div class="xct-points">' + points + '</div>';
         _.$elem.html(tmpl);
         _.$inner = _.$elem.find('.xct-inner');
         _.$inner.children().width(winW);
         _.$inner.width(winW * (number + 2));
+        _.$elem.height(winW/2);
         _.currentIndex = 0;
         _.move();
 
@@ -70,6 +74,9 @@
         });
         _.$points = _.$elem.find('.xct-points').children();
         _.number = number;
+
+        _.bindEvent();
+        _.autoRun();
     };
     Carousel.fn.bindEvent = function() {
         var _ = this;
@@ -105,7 +112,7 @@
             var endTime = new Date();
             var endPosX = e.changedTouches[0].clientX;
             var moveX = endPosX - startPosX;
-            if (Math.abs(moveX) > 100) {
+            if (Math.abs(moveX) > 30) {
                 if (moveX < 0) {
                     _.next();
                 } else {
@@ -206,10 +213,12 @@
     };
     Carousel.fn.resize = function() {
         var _ = this;
-        winW = $WIN.width();
+        winW = _.$elem.width();
         _.$inner.children().width(winW);
-        _.$inner.width(winW * (number + 2));
+        _.$inner.width(winW * (_.number + 2));
+        _.$elem.height(winW/2);
+        _.move();
     };
 
     root.Mobile = Carousel;
-}(Zepto, this.RayCarousel));
+}(Zepto, this.RayCarousels));

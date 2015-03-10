@@ -8,10 +8,9 @@
   "newcap": true,
   "noarg": true,
   "regexp": true,
-  "unused": true,
+  "unused": false,
   "strict": true,
   "smarttabs": true,
   "loopfunc" : true,
-  "expr": true,
-  "evil" :  true
+  "expr": true
 }

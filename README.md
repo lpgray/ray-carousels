@@ -1,19 +1,16 @@
 ray-carousel
 ======
-Carousel组件集合，包括mobile、oppo、pc-single、pc-multiple 4种独立的carousel效果集合，也许以后会添加更多的效果。
-
-我的宗旨是每个组件尽可能简单，代码尽可能少，不需太多参数配置，只求得到效果即可。
+一个图片轮播组件集合，包括`mobile`、`oppo`、`single`、`multiple`4种独立的carousel组件。宗旨是每个组件尽可能简单，代码尽可能少，不需太多参数配置，只求得到效果即可。
 
 ## mobile
-运用在移动端的carousel组件，目前使用在西祠触屏版中。源代码在mobile文件夹下。
+运用在移动端的carousel组件，目前使用在[西祠触屏版](3g.xici.net)中。源代码在`mobile`文件夹下。
 
 ### 特色
 - touch支持
 - 循环滑动
-- 基于zepto.js/zepto-touch.js
+- 基于zepto.js及zepto-touch.js
 
 ### 使用步骤
-
 #### 引用样式
 ```html
 <link rel="stylesheet" href="../mobile/ray-carousel.mobile.min.css">
@@ -23,7 +20,7 @@ Carousel组件集合，包括mobile、oppo、pc-single、pc-multiple 4种独立�
 <script src="../src/assets/zepto.js"></script>
 <script src="../mobile/ray-carousel.mobile.min.js"></script>
 ```
-#### 调用API
+#### API
 ```javascript
 new RayCarousel.Mobile($('#J_Carousel'), {
 	pause: 3000,
@@ -35,22 +32,18 @@ new RayCarousel.Mobile($('#J_Carousel'), {
 ```
 
 ## oppo
-
 模仿oppo官网的幻灯效果，代码在oppo文件夹下，依赖jQuery。
 
 ### 特色
-
 - 基于jQuery
 - 时间条
 - 适合电商、企业站的图片交互效果
 
 ### 使用步骤
-
 #### 引用样式
 ```html
 <link rel="stylesheet" href="../mobile/ray-carousel.oppo.min.css">
 ```
-
 #### 引用JS
 ```html
 <script src="../src/assets/jQuery.js"></script>
@@ -77,8 +70,7 @@ new RayCarousel.Mobile($('#J_Carousel'), {
         </a>
     </div>
 ```
-
-#### 调用API
+#### API
 ```javascript
 new RayCarousel.Oppo({
 	domId: 'J_Oppo',
@@ -86,6 +78,6 @@ new RayCarousel.Oppo({
 });
 ```
 
-## todo pc
+## single
 
-## todo multiple
+## multiple

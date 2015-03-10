@@ -26,21 +26,21 @@ module.exports = function(grunt) {
         },
 
         concat: {
-            styles: {
-                src: ['src/styles/normalize.css', 'src/styles/style.css'],
-                dest: 'tmp/<%= pkg.name %>.css'
-            },
-            scripts: {
-                src: ['src/scripts/core.js'],
-                dest: 'tmp/<%= pkg.name %>.js'
-            },
             mobile:  {
                 src: ['src/scripts/core.js', 'src/scripts/mobile.js'],
-                dest: 'mobile/ray-carousel.mobile.js'
+                dest: 'dist/mobile/mobile.js'
             },
             oppo:  {
                 src: ['src/scripts/core.js', 'src/scripts/oppo.js'],
-                dest: 'oppo/ray-carousel.oppo.js'
+                dest: 'dist/oppo/oppo.js'
+            },
+            single:  {
+                src: ['src/scripts/core.js', 'src/scripts/single.js'],
+                dest: 'dist/oppo/single.js'
+            },
+            multiple:  {
+                src: ['src/scripts/core.js', 'src/scripts/multiple.js'],
+                dest: 'dist/oppo/multiple.js'
             }
         },
 
@@ -48,19 +48,24 @@ module.exports = function(grunt) {
             options: {
                 banner: '<%= banner %>'
             },
-            scripts: {
-                files: {
-                    '<%= dist %>/scripts/<%= pkg.name %>-<%= timestamp %>.min.js': 'tmp/<%= pkg.name %>.js'
-                }
-            },
             mobile: {
                 files: {
-                    'mobile/ray-carousel.mobile.min.js' : 'mobile/ray-carousel.mobile.js'
+                    'dist/mobile/mobile.min.js' : 'dist/mobile/mobile.js'
                 }
             },
             oppo: {
                 files: {
-                    'oppo/ray-carousel.oppo.min.js' : 'oppo/ray-carousel.oppo.js'
+                    'dist/oppo/oppo.min.js' : 'dist/oppo/oppo.js'
+                }
+            },
+            single: {
+                files: {
+                    'dist/single/single.min.js' : 'dist/single/single.js'
+                }
+            },
+            multiple: {
+                files: {
+                    'dist/multiple/multiple.min.js' : 'dist/multiple/multiple.js'
                 }
             }
         },
@@ -77,12 +82,22 @@ module.exports = function(grunt) {
             },
             mobile: {
                 files: {
-                    'mobile/ray-carousel.mobile.min.css' : 'mobile/ray-carousel.mobile.css'
+                    'dist/mobile/mobile.min.css' : 'dist/mobile/mobile.css'
                 }
             },
             oppo: {
                 files: {
-                    'oppo/ray-carousel.oppo.min.css' : 'oppo/ray-carousel.oppo.css'
+                    'dist/oppo/oppo.min.css' : 'dist/oppo/oppo.css'
+                }
+            },
+            single: {
+                files: {
+                    'dist/single/single.min.css' : 'dist/single/single.css'
+                }
+            },
+            multiple: {
+                files: {
+                    'dist/multiple/multiple.min.css' : 'dist/multiple/multiple.css'
                 }
             }
         },
@@ -127,19 +142,12 @@ module.exports = function(grunt) {
         },
 
         watch: {
-            // livereload: {
-            //   options: {
-            //     livereload: true
-            //   },
-            //   files: ['src/**/*.js', 'src/html/**/*.html', 'src/**/*.less'],
-            //   tasks: ['less:development', 'includes', 'jshint']
-            // },
             js: {
                 files: 'src/scripts/**/*.js',
                 tasks: 'jshint:src'
             },
             css: {
-                files: 'src/styles/**/*.less',
+                files: 'src/less/**/*.less',
                 tasks: 'less:development'
             },
             html: {
@@ -162,26 +170,13 @@ module.exports = function(grunt) {
 
         less: {
             development: {
-                path: 'src/styles/',
-                compress: false,
+                paths: 'src/less',
                 files: {
-                    'src/styles/style.css': 'src/styles/style.less',
-                    'src/styles/mobile.css': 'src/styles/mobile.less',
-                    'src/styles/oppo.css': 'src/styles/oppo.less'
-                }
-            },
-            mobile: {
-                path: 'src/styles',
-                compress: false,
-                files: {
-                    'mobile/ray-carousel.mobile.css': 'src/styles/mobile.less'
-                }
-            },
-            oppo: {
-                path: 'src/styles',
-                compress: false,
-                files: {
-                    'oppo/ray-carousel.oppo.css': 'src/styles/oppo.less'
+                    'src/styles/oppo.css' : 'src/less/oppo.less',
+                    'src/styles/style.css' : 'src/less/style.less',
+                    'src/styles/single.css' : 'src/less/single.less',
+                    'src/styles/mobile.css' : 'src/less/mobile.less',
+                    'src/styles/multiple.css' : 'src/less/multiple.less'
                 }
             }
         },
@@ -210,9 +205,6 @@ module.exports = function(grunt) {
 
         browserSync: {
             dev: {
-                // bsFiles: {
-                //   src: 'src/styles/*.css'
-                // },
                 options: {
                     server: {
                         baseDir: 'src'
@@ -229,7 +221,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    // grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-processhtml');
     grunt.loadNpmTasks('grunt-contrib-less');
@@ -242,10 +233,11 @@ module.exports = function(grunt) {
     // Default task.
     grunt.registerTask('default', ['jshint']);
 
-    grunt.registerTask('dev', ['connect', 'watch']);
     grunt.registerTask('dev2', ['browserSync', 'watch']);
 
     grunt.registerTask('build', ['clean', 'less', 'concat', 'uglify', 'cssmin', 'imagemin', 'includes', 'processhtml']);
     grunt.registerTask('build-mobile', ['less:mobile', 'cssmin:mobile', 'concat:mobile', 'uglify:mobile']);
     grunt.registerTask('build-oppo', ['less:oppo', 'cssmin:oppo', 'concat:oppo', 'uglify:oppo']);
+    grunt.registerTask('build-single', ['less:single', 'cssmin:single', 'concat:single', 'uglify:single']);
+    grunt.registerTask('build-multiple', ['less:multiple', 'cssmin:multiple', 'concat:multiple', 'uglify:multiple']);
 };
