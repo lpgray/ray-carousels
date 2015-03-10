@@ -1,5 +1,5 @@
 // RayCarousel
-// mobile
+// mobile dept on zepto
 // author: zhangyang
 (function($, root) {
     'use strict';
@@ -12,7 +12,10 @@
         _.$elem = $elem;
         _.options = options;
 
-        winW = _.$elem.width();
+        // zepto 的坑，未显示元素 width、height 为 0.
+        if (_.$elem.width()) {
+            winW = _.$elem.width();
+        }
 
         _.initTemplate();
     }
@@ -55,7 +58,11 @@
         _.$inner = _.$elem.find('.xct-inner');
         _.$inner.children().width(winW);
         _.$inner.width(winW * (number + 2));
-        _.$elem.height(winW/2);
+        
+        if (_.options.widthHeight) {
+            _.$elem.height(winW/_.options.widthHeight);
+        }
+        
         _.currentIndex = 0;
         _.move();
 
@@ -216,7 +223,11 @@
         winW = _.$elem.width();
         _.$inner.children().width(winW);
         _.$inner.width(winW * (_.number + 2));
-        _.$elem.height(winW/2);
+        
+        if (_.options.widthHeight) {
+            _.$elem.height(winW/_.options.widthHeight);
+        }
+        
         _.move();
     };
 
