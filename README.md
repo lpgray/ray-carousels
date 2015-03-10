@@ -1,4 +1,4 @@
-ray-carousel
+ray-carousels
 ======
 一个图片轮播组件集合，包括`mobile`、`oppo`、`single`、`multiple`4种独立的carousel组件。宗旨是每个组件尽可能简单，代码尽可能少，不需太多参数配置，只求得到效果即可。
 
